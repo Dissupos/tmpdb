@@ -1,25 +1,25 @@
 package com.dis.tmpdb.model;
 
+import com.dis.tmpdb.model.base.AbstractModel;
 import lombok.Data;
-import lombok.NonNull;
+import lombok.ToString;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
 @Data
 @Entity
-public class Template {
-    @Id
-    @GeneratedValue
-    private Long id;
+@ToString(callSuper = true)
+public class Template extends AbstractModel {
+
     private String name;
     private String template;
 
     public Template() {
+        super();
     }
 
     public Template(String name, String template) {
+        this();
         this.name = name;
         this.template = template;
     }

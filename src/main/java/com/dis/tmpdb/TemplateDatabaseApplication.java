@@ -6,9 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
-import org.springframework.web.servlet.DispatcherServlet;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @Slf4j
 @SpringBootApplication
@@ -30,7 +29,7 @@ public class TemplateDatabaseApplication {
             log.info("");
             log.info("All templates with find by all");
             for (Template t : repository.findAll()) {
-                log.info(t.toString());
+                log.info(t.toString() + ";" + t.getCreatedAt());
             }
         };
     }

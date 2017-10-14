@@ -1,4 +1,4 @@
-package com.dis.tmpdb.controller;
+package com.dis.tmpdb.web.controller;
 
 import com.dis.tmpdb.model.ErrorResponse;
 import org.springframework.http.HttpHeaders;

@@ -1,4 +1,4 @@
-package com.dis.tmpdb.resource.form;
+package com.dis.tmpdb.web.resource.form;
 
 import lombok.Data;
 

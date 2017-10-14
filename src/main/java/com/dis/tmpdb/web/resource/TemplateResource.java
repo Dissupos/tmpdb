@@ -1,9 +1,9 @@
-package com.dis.tmpdb.resource;
+package com.dis.tmpdb.web.resource;
 
 import com.dis.tmpdb.help.RestApiController;
 import com.dis.tmpdb.model.Template;
 import com.dis.tmpdb.repository.TemplateRepository;
-import com.dis.tmpdb.resource.form.TemplateForm;
+import com.dis.tmpdb.web.resource.form.TemplateForm;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

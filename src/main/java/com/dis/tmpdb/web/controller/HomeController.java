@@ -1,4 +1,4 @@
-package com.dis.tmpdb.controller;
+package com.dis.tmpdb.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
