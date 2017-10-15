@@ -23,5 +23,9 @@ dist/
 nbdist/
 .nb-gradle/
 
-node_modules/
-src/main/resources/static/built/
+.DS_STORE
+*.log
+frontend/node_modules
+frontend/dist
+frontend/coverage
+.yarn-cache
