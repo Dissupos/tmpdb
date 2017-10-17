@@ -1,9 +1,9 @@
 package com.dis.tmpdb.web.resource.user;
 
 import com.dis.tmpdb.config.security.jwt.JwtAuthenticationRequest;
+import com.dis.tmpdb.config.security.jwt.JwtAuthenticationResponse;
 import com.dis.tmpdb.config.security.jwt.JwtTokenUtil;
 import com.dis.tmpdb.config.security.jwt.JwtUser;
-import com.dis.tmpdb.config.security.jwt.JwtAuthenticationResponse;
 import com.dis.tmpdb.help.RestApiController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -38,7 +38,7 @@ public class AuthenticationResource {
     private UserDetailsService userDetailsService;
 
     @RequestMapping(value = "/auth", method = RequestMethod.POST)
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest, Device device) throws AuthenticationException {
+    public ResponseEntity<JwtAuthenticationResponse> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest, Device device) throws AuthenticationException {
 
         // Perform the security
         final Authentication authentication = authenticationManager.authenticate(
@@ -58,7 +58,7 @@ public class AuthenticationResource {
     }
 
     @RequestMapping(value = "/refresh", method = RequestMethod.GET)
-    public ResponseEntity<?> refreshAndGetAuthenticationToken(HttpServletRequest request) {
+    public ResponseEntity<JwtAuthenticationResponse> refreshAndGetAuthenticationToken(HttpServletRequest request) {
         String token = request.getHeader(tokenHeader);
         String username = jwtTokenUtil.getUsernameFromToken(token);
         JwtUser user = (JwtUser) userDetailsService.loadUserByUsername(username);

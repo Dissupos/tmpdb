@@ -16,10 +16,8 @@ public class User extends AbstractModel {
 
     @Column(name = "USERNAME", length = 50, unique = true)
     private String username;
-
     @Column(name = "PASSWORD", length = 100)
     private String password;
-
     @Column(name = "FIRSTNAME", length = 50)
     private String firstname;
     @Column(name = "LASTNAME", length = 50)

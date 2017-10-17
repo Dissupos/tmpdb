@@ -1,5 +1,6 @@
 @import 'base';
-@import '~bootstrap/scss/bootstrap.scss';
+@import '~bootstrap/dist/css/bootstrap.css';
+@import "~font-awesome/css/font-awesome.css";
 
 // Some best-practice CSS that's useful for most apps
 // Just remove them if they're not what you want
@@ -14,8 +15,73 @@ body {
   height: 100%;
 }
 
+body {
+  padding-top: 3.5rem;
+}
+
+h1 {
+  margin-bottom: 20px;
+  padding-bottom: 9px;
+}
+
 *,
 *:before,
 *:after {
   box-sizing: inherit;
 }
+
+// Table styles
+
+.main-dashboard-table {
+  thead, tbody {
+    tr {
+      th, td {
+        text-align: center;
+
+        &:first-of-type, &:last-of-type {
+          width: 10%;
+        }
+
+        &:nth-of-type(3), &:nth-of-type(3), &:nth-of-type(4), &:nth-of-type(4) {
+          width: 15%;
+        }
+
+        &:nth-of-type(2), &:nth-of-type(2) {
+          text-align: left;
+          width: 50%;
+        }
+      }
+
+    }
+  }
+
+  tbody {
+    tr {
+      &:hover {
+        cursor: pointer;
+        background-color: #dddddd;
+      }
+    }
+  }
+
+  .status {
+    font-size: 30px !important;
+
+    &.success {
+      color: green;
+    }
+
+    &.warning {
+      color: orange;
+    }
+
+    &.error {
+      color: red;
+    }
+
+    &.unknown {
+      color: grey;
+    }
+  }
+}
+

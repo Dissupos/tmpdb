@@ -73,7 +73,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.woff",
                         "/**/*.woff2"
                 ).permitAll()
-                .antMatchers("/api/auth/**","/h2-console/**").permitAll()
+                .antMatchers("/api/auth/**", "/h2-console/**", "/api/servers/**").permitAll()
                 .anyRequest().authenticated();
 
         // Custom JWT based security filter
