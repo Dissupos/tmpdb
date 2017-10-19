@@ -1,4 +1,4 @@
-package com.dis.tmpdb.web.resource.user;
+package com.dis.tmpdb.controller.user;
 
 import com.dis.tmpdb.config.security.jwt.JwtAuthenticationRequest;
 import com.dis.tmpdb.config.security.jwt.JwtAuthenticationResponse;
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
 
 @RestApiController
-public class AuthenticationResource {
+public class AuthenticationRestController {
 
     @Value("${jwt.header}")
     private String tokenHeader;

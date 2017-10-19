@@ -15,7 +15,7 @@ const Status = ({status}) => {
 };
 
 Status.propTypes = {
-  status: PropTypes.number
+  status: PropTypes.string
 };
 
 export default Status;

@@ -1,4 +1,4 @@
-package com.dis.tmpdb.web.resource.dto.server;
+package com.dis.tmpdb.controller.server.dto;
 
 import com.dis.tmpdb.model.server.ServerStatus;
 import lombok.Data;

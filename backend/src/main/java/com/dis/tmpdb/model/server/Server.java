@@ -26,7 +26,7 @@ public class Server extends AbstractModel {
     private Date lastSuccessCheck;
     @Column(name = "LAST_UNSUCCESS_CHECK")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date lastUnSuccessCheck;
+    private Date lastUnsuccessCheck;
 
 
     public Server() {

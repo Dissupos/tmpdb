@@ -22,7 +22,11 @@ const BASE_URL = 'http://127.0.0.1:8080/api';
 // Reducer init state
 // ------------------------------------
 const initialState = {
-  servers: null,
+  servers: [],
+  last: false,
+  first: false,
+  totalPages: 0,
+  currentPage: 0,
   server: null,
   errors: [],
   loading: false
@@ -37,10 +41,10 @@ export function getServersAction() {
   }
 }
 
-export function getServersSuccessAction(servers) {
+export function getServersSuccessAction(data) {
   return {
     type: GET_SERVERS_SUCCESS,
-    servers: servers
+    data: data
   }
 }
 
@@ -107,13 +111,13 @@ export function requestErrorAction(errors) {
 // Async Actions
 // ------------------------------------
 
-export function requestGetServers() {
+export function requestGetServers(page) {
   return (dispatch) => {
     dispatch(getServersAction());
-    axios.get(`${BASE_URL}/servers/`)
+    axios.get(`${BASE_URL}/servers/?page=${page}`)
       .then((response) => {
-        let servers = response.data;
-        dispatch(getServersSuccessAction(servers));
+        let data = response.data;
+        dispatch(getServersSuccessAction(data));
       }, (response) => {
         dispatch(requestErrorAction(response.errors));
       });
@@ -144,12 +148,24 @@ export const deleteServer = ({dispatch}) => {
 // ------------------------------------
 // Reducer
 // ------------------------------------
+function handleGetServersSuccess(state, data) {
+
+  return Object.assign({}, state, {
+    loading: false,
+    servers: data && data.content || initialState.servers,
+    totalPages: data && data.totalPages || initialState.totalPages,
+    last: data && data.last || initialState.last,
+    first: data && data.first || initialState.first,
+    currentPage: data && data.number || initialState.currentPage
+  });
+}
+
 export default function serversReducer(state = initialState, action) {
   switch (action.type) {
     case GET_SERVERS:
       return Object.assign({}, state, {loading: true});
     case GET_SERVERS_SUCCESS:
-      return Object.assign({}, state, {loading: false, servers: action.servers});
+      return handleGetServersSuccess(state, action.data);
     case GET_SERVER:
       break;
     case  ADD_SERVER:

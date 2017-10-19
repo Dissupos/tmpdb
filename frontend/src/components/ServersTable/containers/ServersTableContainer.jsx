@@ -6,13 +6,17 @@ const mapStateToProps = (state) => {
   return {
     servers: state.servers.servers,
     loading: state.servers.loading,
-    errors: state.servers.errors
+    errors: state.servers.errors,
+    first: state.servers.first,
+    last: state.servers.last,
+    totalPages: state.servers.totalPages,
+    currentPage: state.servers.currentPage
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getServers: () => dispatch(requestGetServers())
+    getServers: (page) => dispatch(requestGetServers(page))
   }
 };
 

@@ -11,7 +11,7 @@ class ServersTable extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getServers()
+    this.props.getServers(0)
   }
 
   createTableRow(item) {
@@ -26,32 +26,61 @@ class ServersTable extends React.Component {
     );
   }
 
+  createPagination(first, last, current, total) {
+    return (
+      <nav aria-label="...">
+        <ul className="pagination">
+          <li className={`page-item ${first && 'disabled'}`}>
+            <a className="page-link" href="#" tabindex="-1">Previous</a>
+          </li>
+          <li className="page-item active"><a className="page-link" href="#">1</a></li>
+          <li onClick={this.props.getServers(1)} className="page-item">
+            <a className="page-link" href="#">2 <span className="sr-only">(current)</span></a>
+          </li>
+          <li className="page-item"><a className="page-link" href="#">3</a></li>
+          <li className="page-item">
+            <a className="page-link" href="#">Next</a>
+          </li>
+        </ul>
+      </nav>
+    )
+  }
+
   render() {
     return (
-      <div className="table-responsive">
-        <table className="table main-dashboard-table">
-          <thead>
-          <tr>
-            <th>Status</th>
-            <th>Name</th>
-            <th>Last successful check</th>
-            <th>Last unsuccessful check</th>
-            <th>On/Off</th>
-          </tr>
-          </thead>
-          <tbody>
-          {this.props.servers != undefined ? this.props.servers.content.map(this.createTableRow) : null}
-          </tbody>
-        </table>
+      <div>
+        <div className="table-responsive">
+          <table className="table main-dashboard-table">
+            <thead>
+            <tr>
+              <th>Status</th>
+              <th>Name</th>
+              <th>Last successful check</th>
+              <th>Last unsuccessful check</th>
+              <th>On/Off</th>
+            </tr>
+            </thead>
+            <tbody>
+            {this.props.servers.map(this.createTableRow)}
+            </tbody>
+          </table>
+          {this.createPagination(this.props.first, this.props.last, this.props.currentPage, this.props.totalPages)}
+        </div>
+
+        {[this.props.first, this.props.last, this.props.totalPages, this.props.currentPage].join('/')}
       </div>
     );
   }
 }
 
 ServersTable.propTypes = {
-  servers: PropTypes.object,
+  servers: PropTypes.array,
   errors: PropTypes.array,
   loading: PropTypes.bool,
+  last: PropTypes.bool,
+  first: PropTypes.bool,
+  totalPages: PropTypes.number,
+  currentPage: PropTypes.number,
   getServers: PropTypes.func
 };
 

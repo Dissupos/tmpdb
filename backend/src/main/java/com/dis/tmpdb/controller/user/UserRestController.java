@@ -1,4 +1,4 @@
-package com.dis.tmpdb.web.resource.user;
+package com.dis.tmpdb.controller.user;
 
 import com.dis.tmpdb.config.security.jwt.JwtTokenUtil;
 import com.dis.tmpdb.config.security.jwt.JwtUser;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
 
 @RestApiController
-public class UserResource {
+public class UserRestController {
 
     private JwtTokenUtil jwtTokenUtil;
     private UserDetailsService userDetailsService;
@@ -21,7 +21,7 @@ public class UserResource {
     private String tokenHeader;
 
     @Autowired
-    public UserResource(JwtTokenUtil jwtTokenUtil, UserDetailsService userDetailsService) {
+    public UserRestController(JwtTokenUtil jwtTokenUtil, UserDetailsService userDetailsService) {
         this.jwtTokenUtil = jwtTokenUtil;
         this.userDetailsService = userDetailsService;
     }
