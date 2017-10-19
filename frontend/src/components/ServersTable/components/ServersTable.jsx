@@ -16,12 +16,12 @@ class ServersTable extends React.Component {
 
   createTableRow(item) {
     return (
-      <tr key={item.name}>
+      <tr key={item.id}>
         <td><Status status={item.status}/></td>
         <td>{item.name}</td>
-        <td>{item.lastSuccessfulCheck}</td>
-        <td>{item.lastUnsuccessfulCheck}</td>
-        <td><i className={`fa fa-power-off status ${item.turnOn ? 'success' : 'error'}`} aria-hidden="true"/></td>
+        <td>{item.lastSuccessCheck}</td>
+        <td>{item.lastUnsuccessCheck}</td>
+        <td><i className={`fa fa-power-off status ${item.enabled ? 'success' : 'error'}`} aria-hidden="true"/></td>
       </tr>
     );
   }
@@ -40,7 +40,7 @@ class ServersTable extends React.Component {
           </tr>
           </thead>
           <tbody>
-          {this.props.servers.map(this.createTableRow)}
+          {this.props.servers != undefined ? this.props.servers.content.map(this.createTableRow) : null}
           </tbody>
         </table>
       </div>
@@ -49,7 +49,7 @@ class ServersTable extends React.Component {
 }
 
 ServersTable.propTypes = {
-  servers: PropTypes.array,
+  servers: PropTypes.object,
   errors: PropTypes.array,
   loading: PropTypes.bool,
   getServers: PropTypes.func

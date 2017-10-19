@@ -22,7 +22,7 @@ const BASE_URL = 'http://127.0.0.1:8080/api';
 // Reducer init state
 // ------------------------------------
 const initialState = {
-  servers: [],
+  servers: null,
   server: null,
   errors: [],
   loading: false
